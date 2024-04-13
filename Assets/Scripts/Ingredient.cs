@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Ingredient : MonoBehaviour, IDropHandler
 {
-    [SerializeField] INGREDIENT_TYPE _type;
+    [SerializeField] private INGREDIENT_TYPE _type;
     [SerializeField] public Sprite sprite;
 
     private Drag _drag;
@@ -17,6 +17,8 @@ public class Ingredient : MonoBehaviour, IDropHandler
     {
         _image = GetComponent<Image>();
         _drag = GetComponent<Drag>();
+
+        _image.sprite = sprite;
     }
 
     public void setUse(bool isInUse)
@@ -45,7 +47,7 @@ public class Ingredient : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             Emplacement emplacement = eventData.pointerDrag.GetComponent<Emplacement>();
-            if ( emplacement && _inUse && _type == emplacement.getIngredientTypeInSlot() )
+            if ( emplacement && _inUse && _type == emplacement.getIngredientInSlot().getType() )
             {
                 emplacement.emptyEmplacement();
                 setUse(false);

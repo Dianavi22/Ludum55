@@ -45,7 +45,6 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("end");
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
     }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum INGREDIENT_TYPE { 
-    NONE,
     WING,
     FINGER,
     TAIL,
