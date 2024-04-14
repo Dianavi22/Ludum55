@@ -11,6 +11,6 @@ public enum GAMESTATE
     MENU,
     INIT,
     TIMEREND,
-    INVOKE_FAIL,
+    INVOKE,
     DIALOG
 }

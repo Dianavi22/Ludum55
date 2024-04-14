@@ -9,11 +9,14 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 {
     [SerializeField] private INGREDIENT_TYPE _type;
     [SerializeField] public Sprite sprite;
+    Note _note;
+    [SerializeField] CanvasGroup _noteCanvas;
 
     private Drag _drag;
     private Image _image;
     private bool _inUse = false;
-    private bool _interactable;
+    private bool _hovered;
+    private bool _onNote;
 
     private void Awake()
     {
@@ -21,7 +24,33 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         _drag = GetComponent<Drag>();
 
         _image.sprite = sprite;
-        _interactable = true;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.E) & _noteCanvas != null)
+        {
+            if (_hovered && !_onNote)
+            {
+                Debug.Log("SHOW NOTE");
+                _noteCanvas.alpha = 1f;
+                _onNote = true;
+            }
+            else
+            {
+                Debug.Log("HIDE NOTE");
+                _noteCanvas.alpha = 0f;
+                _onNote = false;
+            }
+
+            
+        }
+    }
+
+    public void setNote(Note note)
+    {
+        _note = note;
+        _noteCanvas = _note.GetComponent<CanvasGroup>();
     }
 
     public void setUse(bool isInUse)
@@ -64,20 +93,15 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
     private void _hoverStart()
     {
-        if (!_inUse)
-        {
-            transform.DOScale(1.1f, 0.25f);
-        }
-
+        Debug.Log("HOVER START");
+        _hovered = true;
+        transform.DOScale(1.1f, 0.25f);
     }
     private void _hoverEnd()
     {
-
-        if (!_inUse)
-        {
-            transform.DOScale(1f, 0.25f);
-        }
-
+        Debug.Log("HOVER END");
+        _hovered = false;
+        transform.DOScale(1f, 0.25f);
     }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
@@ -88,19 +112,5 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
         _hoverEnd();
-    }
-
-    public void DisableInteractions()
-    {
-        _interactable = false;
-        _drag.DisableDrag();
-    }
-    public void EnableInteractions()
-    {
-        _interactable = true;
-        if (!_inUse)
-        {
-            _drag.EnableDrag();
-        }
     }
 }
