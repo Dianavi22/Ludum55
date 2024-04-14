@@ -1,18 +1,55 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InvocationManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] CanvasGroup panel;
+    [SerializeField] RectTransform invocation;
+    [SerializeField] Image invocationImage;
+
+    private void Awake()
     {
-        
+        panel.alpha = 0f;
+        panel.blocksRaycasts = false;
+        invocation.localScale = Vector3.zero;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InvocationFail(Action afterInvocation)
     {
-        
+        Show(afterInvocation);
+    }
+
+    public void InvocationSuccess(Action afterInvocation)
+    {
+        Show(afterInvocation);
+    }
+
+    public void Defeat(Action afterInvocation)
+    {
+        Show(afterInvocation);
+    }
+
+    public void ResetInvocation()
+    {
+        panel.DOKill();
+        invocation.DOKill();
+        panel.alpha = 0f;
+        invocation.localScale = Vector3.zero;
+    }
+
+    private void Show(Action afterInvocation)
+    {
+        panel.DOFade(1f, 1f).OnComplete(() =>
+        {
+            invocation.DOScale(1, 0.8f).SetEase(Ease.InElastic).OnComplete(() =>
+            {
+                //invocation.DOShakePosition(0.5).SetLoops(4, LoopType.Yoyo);
+                afterInvocation();
+            });
+        });
     }
 }

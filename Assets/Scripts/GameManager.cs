@@ -14,19 +14,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] Canvas _canvas;
     [SerializeField] Emplacement[] _emplacements;
     [SerializeField] Ingredient[] _ingredients;
+    [SerializeField] Note[] _notes;
     [SerializeField] Button _invokeButton;
     [SerializeField] GameObject _ingredientsContainer;
     [SerializeField] TextMeshProUGUI _timerTxt;
     [SerializeField] MenuManager _menuManager;
     [SerializeField] DialogManager _dialogManager;
     [SerializeField] InvocationManager _invocationManager;
+    [SerializeField] GameObject _invisibleZone;
 
     GAMESTATE _state;
 
     private void Awake()
     {
         _invokeButton.interactable = false;
-        _invokeButton.GetComponent<RectTransform>().localScale = Vector3.zero;
+        _invokeButton.GetComponent<RectTransform>().localScale = Vector3.zero; 
+        _invisibleZone.SetActive(true);
     }
 
     private void Start()
@@ -34,9 +37,24 @@ public class GameManager : MonoBehaviour
         Menu();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(_state == GAMESTATE.GAME)
+            {
+                Pause();
+            }
+            else if(_state == GAMESTATE.PAUSE)
+            {
+                Resume();
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
-        if(_state == GAMESTATE.PLAY)
+        if(_state == GAMESTATE.GAME)
         {
             if(_timer >= 1)
             {
@@ -51,16 +69,10 @@ public class GameManager : MonoBehaviour
             else
             {
                 SetGameState(GAMESTATE.TIMEREND);
-                _InvokeFail();
+                _Defeat();
                 
             }
         }
-
-        if(_state == GAMESTATE.INIT && Input.GetKeyUp("space"))
-        {
-            OnIntroEnded();
-        }
-        
     }
 
     public void OnIntroEnded()
@@ -77,7 +89,8 @@ public class GameManager : MonoBehaviour
 
         _dialogManager.ShowDialog(sentences, Color.red, () =>
         {
-            SetGameState(GAMESTATE.PLAY);
+            SetGameState(GAMESTATE.GAME);
+            _invisibleZone.SetActive(false);
         });
     }
 
@@ -85,19 +98,21 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GAMESTATE.MENU);
         _menuManager.MenuPanel();
-        _DisableInteractions();
+        _invisibleZone.SetActive(true);
     }
 
     private void Pause()
     {
         SetGameState(GAMESTATE.PAUSE);
-        _DisableInteractions(); 
+        _menuManager.PausePanel();
+        _invisibleZone.SetActive(true);
     }
 
     private void Resume()
     {
-        SetGameState(GAMESTATE.PLAY);
-        _EnableInteractions();
+        SetGameState(GAMESTATE.GAME);
+        _menuManager.GamePanel(); 
+        _invisibleZone.SetActive(false);
     }
 
     public void OnEmplacementUsed(Emplacement emplacement)
@@ -113,7 +128,8 @@ public class GameManager : MonoBehaviour
     public void OnPlayButtonClicked()
     {
         Init();
-        _menuManager.IntroPanel();
+        _menuManager.IntroPanel(); 
+        _invisibleZone.SetActive(true);
     }
 
     public void OnCreditsButtonClicked()
@@ -121,10 +137,25 @@ public class GameManager : MonoBehaviour
         _menuManager.CreditPanel();
     }
 
+    public void OnResumeButtonClicked()
+    {
+        Resume();
+    }
+
+    public void OnMenuButtonClicked()
+    {
+        Menu();
+    }
+
+    public void OnQuitButtonClicked()
+    {
+        Application.Quit();
+    }
+
     public void CastInvoke()
     {
-        _DisableInteractions();
-
+        SetGameState(GAMESTATE.INVOKE);
+        _invisibleZone.SetActive(true);
         if (_emplacements.Count(e => e.isOk()) == _emplacements.Length)
         {
             _InvokeSuccess();
@@ -165,24 +196,48 @@ public class GameManager : MonoBehaviour
 
     private void _InvokeSuccess()
     {
-        _Victory();
+        _invocationManager.InvocationSuccess(() =>
+        {
+            _dialogManager.ShowDialog(new List<string>() { "Bonjour..." }.ToArray(), Color.red, () =>
+            {
+                _Victory(); 
+                _invocationManager.ResetInvocation();
+            });
+        });
     }
 
     private void _InvokeFail()
     {
-        SetGameState(GAMESTATE.INVOKE_FAIL);
+        _invocationManager.InvocationFail(() =>
+        {
+            _dialogManager.ShowDialog(new List<string>() { "On non, ce n'est pas mon patron..." }.ToArray(), Color.white, () =>
+            {
+                SetGameState(GAMESTATE.GAME);
+                _invisibleZone.SetActive(false);
+                _invocationManager.ResetInvocation();
+            });
+        });
     }
 
     private void _Victory()
     {
         SetGameState(GAMESTATE.VICTORY);
-        _menuManager.DefeatPanel();
+        _menuManager.VictoryPanel();
+        _invisibleZone.SetActive(true);
     }
 
     private void _Defeat()
     {
         SetGameState(GAMESTATE.DEFEAT);
-        _menuManager.DefeatPanel();
+        _invocationManager.InvocationFail(() =>
+        {
+            _dialogManager.ShowDialog(new List<string>() { "Oh non..." }.ToArray(), Color.white, () =>
+            {
+                _menuManager.DefeatPanel();
+                _invisibleZone.SetActive(true);
+                _invocationManager.ResetInvocation();
+            });
+        });
     }
 
     private void SetGameState(GAMESTATE gameState)
@@ -190,37 +245,12 @@ public class GameManager : MonoBehaviour
        _state = gameState;
     }
 
-    private void _DisableInteractions()
-    {
-        //foreach (var item in _emplacements)
-        //{
-        //    item.DisableInteractions();
-        //}
-
-        //foreach (var item in _ingredients)
-        //{
-        //    item.DisableInteractions();
-        //}
-    }
-
-    private void _EnableInteractions()
-    {
-        //foreach (var item in _emplacements)
-        //{
-        //    item.EnableInteractions();
-        //}
-
-        //foreach (var item in _ingredients)
-        //{
-        //    item.EnableInteractions();
-        //}
-    }
-
     private void Init()
     {
         SetGameState(GAMESTATE.INIT);
 
         _timer = _duration;
+        _timerTxt.text = "";
 
         GridLayoutGroup gridLayoutGroup = _ingredientsContainer.GetComponent<GridLayoutGroup>();
         gridLayoutGroup.enabled = true;
@@ -228,7 +258,12 @@ public class GameManager : MonoBehaviour
         foreach (var item in _ingredients)
         {
             item.GetComponent<Drag>().setCanvas(_canvas);
-            Instantiate(item, gridLayoutGroup.transform);
+            Note note = _notes.Where(n => n.GetIngredientType() == item.getType()).First();
+            if(note != null)
+            {
+                item.setNote(note);
+                Instantiate(item, gridLayoutGroup.transform);
+            }
         }
 
         gridLayoutGroup.enabled = false;

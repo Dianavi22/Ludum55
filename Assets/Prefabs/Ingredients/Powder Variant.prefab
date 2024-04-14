@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1006935471314436875
+--- !u!1001 &1320549684990550438
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,20 +10,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6177016035641641509, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: m_Name
-      value: Finger Variant
+      value: Powder Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7042348191808700961, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7131837688595153117, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
+      propertyPath: note
+      value: 
+      objectReference: {fileID: 1406734818502500312, guid: a700330b8ec635f438feb3c28580498d, type: 3}
+    - target: {fileID: 7131837688595153117, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: _type
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7131837688595153117, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8340ff953cd15874cac0b4d7cfe53d5e, type: 3}
+      objectReference: {fileID: 21300000, guid: de7aa5712c087c74093df20c8e218aba, type: 3}
     - target: {fileID: 7914807544693942785, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -86,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7914807544693942785, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 470
+      value: 1030
       objectReference: {fileID: 0}
     - target: {fileID: 7914807544693942785, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: m_AnchoredPosition.y

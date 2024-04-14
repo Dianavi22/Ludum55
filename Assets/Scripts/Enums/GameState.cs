@@ -4,13 +4,13 @@ using UnityEngine;
 
 public enum GAMESTATE
 {
-    PLAY,
+    GAME,
     PAUSE,
     VICTORY,
     DEFEAT,
     MENU,
     INIT,
     TIMEREND,
-    INVOKE_FAIL,
+    INVOKE,
     DIALOG
 }

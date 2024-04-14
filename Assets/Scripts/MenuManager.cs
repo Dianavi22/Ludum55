@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,6 +46,11 @@ public class MenuManager : MonoBehaviour
     public void CreditPanel()
     {
         ActivePanel(_creditsPanel);
+    }
+
+    public void PausePanel()
+    {
+        ActivePanel(_pausePanel);
     }
 
     private void ActivePanel(GameObject panel)
