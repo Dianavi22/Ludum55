@@ -40,6 +40,8 @@ public class DialogManager : MonoBehaviour
         _sentences = sentences;
         _afterDialog = afterDialog;
         _onUse = true;
+        dialogContainer.blocksRaycasts = true;
+
         _readSentence();
     }
 
@@ -72,6 +74,7 @@ public class DialogManager : MonoBehaviour
         _currentSentenceIndex = 0;
         _sentences = new string[0];
         _afterDialog = null;
-        _onUse = false; 
+        _onUse = false;
+        dialogContainer.blocksRaycasts = false;
     }
 }

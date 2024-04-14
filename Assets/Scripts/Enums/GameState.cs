@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum GAMESTATE
 {
-    PLAY,
+    GAME,
     PAUSE,
     VICTORY,
     DEFEAT,

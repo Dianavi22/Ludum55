@@ -29,10 +29,14 @@ public class Intro : MonoBehaviour
         button.interactable = false;
     }
 
-    void Start()
+    void OnEnable()
     {
-        _readSentence(0);
+        _introEnded = false;
+        button.GetComponent<CanvasGroup>().alpha = 0;
+        button.interactable = false;
         supportText.alpha = 0f;
+
+        _readSentence(0);
     }
 
     private void Update()

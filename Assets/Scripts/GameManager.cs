@@ -34,9 +34,24 @@ public class GameManager : MonoBehaviour
         Menu();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(_state == GAMESTATE.GAME)
+            {
+                Pause();
+            }
+            else if(_state == GAMESTATE.PAUSE)
+            {
+                Resume();
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
-        if(_state == GAMESTATE.PLAY)
+        if(_state == GAMESTATE.GAME)
         {
             if(_timer >= 1)
             {
@@ -71,7 +86,7 @@ public class GameManager : MonoBehaviour
 
         _dialogManager.ShowDialog(sentences, Color.red, () =>
         {
-            SetGameState(GAMESTATE.PLAY);
+            SetGameState(GAMESTATE.GAME);
         });
     }
 
@@ -79,19 +94,18 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GAMESTATE.MENU);
         _menuManager.MenuPanel();
-        _DisableInteractions();
     }
 
     private void Pause()
     {
         SetGameState(GAMESTATE.PAUSE);
-        _DisableInteractions(); 
+        _menuManager.PausePanel();
     }
 
     private void Resume()
     {
-        SetGameState(GAMESTATE.PLAY);
-        _EnableInteractions();
+        SetGameState(GAMESTATE.GAME);
+        _menuManager.GamePanel();
     }
 
     public void OnEmplacementUsed(Emplacement emplacement)
@@ -115,9 +129,23 @@ public class GameManager : MonoBehaviour
         _menuManager.CreditPanel();
     }
 
+    public void OnResumeButtonClicked()
+    {
+        Resume();
+    }
+
+    public void OnMenuButtonClicked()
+    {
+        Menu();
+    }
+
+    public void OnQuitButtonClicked()
+    {
+        Application.Quit();
+    }
+
     public void CastInvoke()
     {
-        _DisableInteractions();
 
         if (_emplacements.Count(e => e.isOk()) == _emplacements.Length)
         {
@@ -167,7 +195,7 @@ public class GameManager : MonoBehaviour
         SetGameState(GAMESTATE.INVOKE_FAIL);
         _dialogManager.ShowDialog(new List<string>() { "On non, ce n'est pas mon patron..."}.ToArray(), Color.white , () =>
         {
-            SetGameState(GAMESTATE.PLAY);
+            SetGameState(GAMESTATE.GAME);
         });
     }
 
@@ -188,37 +216,12 @@ public class GameManager : MonoBehaviour
        _state = gameState;
     }
 
-    private void _DisableInteractions()
-    {
-        //foreach (var item in _emplacements)
-        //{
-        //    item.DisableInteractions();
-        //}
-
-        //foreach (var item in _ingredients)
-        //{
-        //    item.DisableInteractions();
-        //}
-    }
-
-    private void _EnableInteractions()
-    {
-        //foreach (var item in _emplacements)
-        //{
-        //    item.EnableInteractions();
-        //}
-
-        //foreach (var item in _ingredients)
-        //{
-        //    item.EnableInteractions();
-        //}
-    }
-
     private void Init()
     {
         SetGameState(GAMESTATE.INIT);
 
         _timer = _duration;
+        _timerTxt.text = "";
 
         GridLayoutGroup gridLayoutGroup = _ingredientsContainer.GetComponent<GridLayoutGroup>();
         gridLayoutGroup.enabled = true;
