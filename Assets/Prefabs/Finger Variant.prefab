@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finger Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7042348191808700961, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7131837688595153117, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: _type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7131837688595153117, guid: 5d3c88c4cde9b914f9d7bad178037b3a, type: 3}
       propertyPath: sprite
