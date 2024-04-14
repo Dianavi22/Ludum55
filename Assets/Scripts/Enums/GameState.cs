@@ -8,5 +8,7 @@ public enum GAMESTATE
     PAUSE,
     VICTORY,
     DEFEAT,
-    INIT
+    MENU,
+    INIT,
+    TIMEREND
 }

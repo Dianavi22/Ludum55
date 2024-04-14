@@ -19,6 +19,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         _defaultPos = _rectTransform.anchoredPosition;
     }
 
+    public void setCanvas(Canvas canvas)
+    {
+        _canvas = canvas;
+    }
+
     public void EnableDrag()
     {
         _canDrag = true;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField] GameManager _gameManager;
     [SerializeField] Sprite _emptySprite;
     [SerializeField] INGREDIENT_TYPE _accept;
 
@@ -12,6 +13,7 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
     private Drag _drag;
     private bool _isEmpty;
     private Ingredient _ingredient;
+    private bool _interactable;
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
         _drag.DisableDrag();
 
         _isEmpty = true;
+        _interactable = true;
     }
 
     private void useEmplacement(Ingredient ingredient)
@@ -33,6 +36,8 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
             _ingredient = ingredient;
 
             ingredient.setUse(true);
+
+            _gameManager.OnEmplacementUsed(this);
         }
 
     }
@@ -65,12 +70,23 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
                 _ingredient.setUse(false);
                 _ingredient = null;
             }
+
+            _gameManager.OnEmplacementEmpty(this);
         }
     }
 
     public bool isOk()
     {
-        return _accept == _ingredient.getType();
+        if (_ingredient)
+        {
+            return _accept == _ingredient.getType();
+        }
+        return false;
+    }
+
+    public bool isEmpty()
+    {
+        return _isEmpty;
     }
 
     public Ingredient getIngredientInSlot()
@@ -114,19 +130,39 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        _hoverStart();
+        if (_interactable)
+        {
+           _hoverStart(); 
+        }
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
-        _hoverEnd();   
+        if (_interactable)
+        { 
+            _hoverEnd();
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right)
+        if(eventData.button == PointerEventData.InputButton.Right && _interactable)
         {
             emptyEmplacement();
+        }
+    }
+
+    public void DisableInteractions()
+    {
+        _interactable = false;
+        _drag.DisableDrag();
+    }
+    public void EnableInteractions()
+    {
+        _interactable = true;
+        if (!_isEmpty)
+        {
+            _drag.EnableDrag();
         }
     }
 }

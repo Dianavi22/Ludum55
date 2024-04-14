@@ -1,10 +1,11 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Ingredient : MonoBehaviour, IDropHandler
+public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private INGREDIENT_TYPE _type;
     [SerializeField] public Sprite sprite;
@@ -12,6 +13,7 @@ public class Ingredient : MonoBehaviour, IDropHandler
     private Drag _drag;
     private Image _image;
     private bool _inUse = false;
+    private bool _interactable;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class Ingredient : MonoBehaviour, IDropHandler
         _drag = GetComponent<Drag>();
 
         _image.sprite = sprite;
+        _interactable = true;
     }
 
     public void setUse(bool isInUse)
@@ -56,6 +59,48 @@ public class Ingredient : MonoBehaviour, IDropHandler
             {
                 eventData.pointerDrag.GetComponent<Drag>().BackToDefaultPos();
             }
+        }
+    }
+
+    private void _hoverStart()
+    {
+        if (!_inUse)
+        {
+            transform.DOScale(1.1f, 0.25f);
+        }
+
+    }
+    private void _hoverEnd()
+    {
+
+        if (!_inUse)
+        {
+            transform.DOScale(1f, 0.25f);
+        }
+
+    }
+
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    {
+        _hoverStart();
+    }
+
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    {
+        _hoverEnd();
+    }
+
+    public void DisableInteractions()
+    {
+        _interactable = false;
+        _drag.DisableDrag();
+    }
+    public void EnableInteractions()
+    {
+        _interactable = true;
+        if (!_inUse)
+        {
+            _drag.EnableDrag();
         }
     }
 }
