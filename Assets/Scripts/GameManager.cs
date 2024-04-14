@@ -36,9 +36,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Menu();
-        //Play();
-        //_InvokeSuccess();
+        //Menu();
+        Play();
     }
 
     private void Update()
@@ -160,6 +159,11 @@ public class GameManager : MonoBehaviour
     public void OnMenuButtonClicked()
     {
         Menu();
+    }
+    public void OnRestartButtonClicked()
+    {
+        Init();
+        Play();
     }
 
     public void OnQuitButtonClicked()
