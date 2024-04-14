@@ -97,10 +97,10 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
     {
         if(eventData.pointerDrag != null)
         {
-            if (eventData.pointerDrag.GetComponent<Ingredient>())
+            if (eventData.pointerDrag.GetComponent<Ingredient>() && eventData.pointerDrag.GetComponent<Drag>().CanDrag())
             {
                 useEmplacement(eventData.pointerDrag.GetComponent<Ingredient>());
-            } else if (eventData.pointerDrag.GetComponent<Emplacement>() && _isEmpty)
+            } else if (eventData.pointerDrag.GetComponent<Emplacement>() && _isEmpty && eventData.pointerDrag.GetComponent<Drag>().CanDrag())
             {
                 moveEmplacement(eventData.pointerDrag.GetComponent<Emplacement>());
             }

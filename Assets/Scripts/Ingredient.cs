@@ -9,7 +9,6 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 {
     [SerializeField] private INGREDIENT_TYPE _type;
     [SerializeField] public Sprite sprite;
-    Note _note;
     [SerializeField] CanvasGroup _noteCanvas;
 
     private Drag _drag;
@@ -46,13 +45,6 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
             
         }
     }
-
-    public void setNote(Note note)
-    {
-        _note = note;
-        _noteCanvas = _note.GetComponent<CanvasGroup>();
-    }
-
     public void setUse(bool isInUse)
     {
         _inUse = isInUse;
@@ -79,7 +71,7 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         if (eventData.pointerDrag != null)
         {
             Emplacement emplacement = eventData.pointerDrag.GetComponent<Emplacement>();
-            if ( emplacement && _inUse && _type == emplacement.getIngredientInSlot().getType() )
+            if ( emplacement && _inUse && _type == emplacement.getIngredientInSlot().getType() && emplacement.GetComponent<Drag>().CanDrag() )
             {
                 emplacement.emptyEmplacement();
                 setUse(false);

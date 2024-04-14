@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _timer;
     [SerializeField] Canvas _canvas;
     [SerializeField] Emplacement[] _emplacements;
-    [SerializeField] Ingredient[] _ingredients;
+    [SerializeField] GameObject _ingredientsZone;
+    [SerializeField] GameObject _emplacementsZone;
     [SerializeField] Note[] _notes;
     [SerializeField] Button _invokeButton;
     [SerializeField] GameObject _ingredientsContainer;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogManager _dialogManager;
     [SerializeField] InvocationManager _invocationManager;
     [SerializeField] GameObject _invisibleZone;
+    [SerializeField] SoundManager _soundManager;
 
     GAMESTATE _state;
 
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Menu();
+        //Play();
+        //_InvokeSuccess();
     }
 
     private void Update()
@@ -93,8 +97,7 @@ public class GameManager : MonoBehaviour
 
         _dialogManager.ShowDialog(sentences, Color.red, () =>
         {
-            SetGameState(GAMESTATE.GAME);
-            _invisibleZone.SetActive(false);
+            Game(start : true);
         });
     }
 
@@ -103,6 +106,7 @@ public class GameManager : MonoBehaviour
         SetGameState(GAMESTATE.MENU);
         _menuManager.MenuPanel();
         _invisibleZone.SetActive(true);
+        _soundManager.DisablePendulum();
     }
 
     private void Pause()
@@ -110,13 +114,20 @@ public class GameManager : MonoBehaviour
         SetGameState(GAMESTATE.PAUSE);
         _menuManager.PausePanel();
         _invisibleZone.SetActive(true);
+        _soundManager.DisablePendulum();
     }
 
     private void Resume()
     {
+        Game();
+    }
+
+    private void Game(bool start = false)
+    {
         SetGameState(GAMESTATE.GAME);
-        _menuManager.GamePanel(); 
+        if(!start) _menuManager.GamePanel();
         _invisibleZone.SetActive(false);
+        _soundManager.ActivePendulum();
     }
 
     public void OnEmplacementUsed(Emplacement emplacement)
@@ -200,6 +211,10 @@ public class GameManager : MonoBehaviour
 
     private void _InvokeSuccess()
     {
+        _invokeButton.gameObject.SetActive(false);
+        _ingredientsZone.SetActive(false);
+        _emplacementsZone.SetActive(false); 
+
         _invocationManager.InvocationSuccess(() =>
         {
             _dialogManager.ShowDialog(new List<string>() { "Bonjour..." }.ToArray(), Color.red, () =>
@@ -216,9 +231,7 @@ public class GameManager : MonoBehaviour
         {
             _dialogManager.ShowDialog(new List<string>() { "On non, ce n'est pas mon patron..." }.ToArray(), Color.white, () =>
             {
-                SetGameState(GAMESTATE.GAME);
-                _invisibleZone.SetActive(false);
-                _invocationManager.ResetInvocation();
+                Game();
             });
         });
     }
@@ -228,6 +241,8 @@ public class GameManager : MonoBehaviour
         SetGameState(GAMESTATE.VICTORY);
         _menuManager.VictoryPanel();
         _invisibleZone.SetActive(true);
+
+        _soundManager.DisablePendulum();
     }
 
     private void _Defeat()
@@ -242,6 +257,8 @@ public class GameManager : MonoBehaviour
                 _invocationManager.ResetInvocation();
             });
         });
+
+        _soundManager.DisablePendulum();
     }
 
     private void SetGameState(GAMESTATE gameState)
@@ -255,23 +272,5 @@ public class GameManager : MonoBehaviour
 
         _timer = _duration;
         _timerTxt.text = "";
-
-        GridLayoutGroup gridLayoutGroup = _ingredientsContainer.GetComponent<GridLayoutGroup>();
-        gridLayoutGroup.enabled = true;
-
-        foreach (var item in _ingredients)
-        {
-            item.GetComponent<Drag>().setCanvas(_canvas);
-            Note note = _notes.Where(n => n.GetIngredientType() == item.getType()).First();
-            if(note != null)
-            {
-                item.setNote(note);
-                Instantiate(item, gridLayoutGroup.transform);
-            }
-        }
-
-        gridLayoutGroup.enabled = false;
-
-        //_ingredients.
     }
 }

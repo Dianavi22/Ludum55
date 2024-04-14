@@ -34,6 +34,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         _canDrag = false;
     }
 
+    public bool CanDrag()
+    {
+        return _canDrag;
+    }
+
     public void BackToDefaultPos()
     {
         _rectTransform.anchoredPosition = _defaultPos;

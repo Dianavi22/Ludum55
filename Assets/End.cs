@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,44 +14,19 @@ public class End : MonoBehaviour
 
     public Color initialColor;
 
-
     [SerializeField] GameObject WinLight;
     [SerializeField] ParticleSystem WinPart;
-
-
-    float timeElapsed;
-    float lerpDurationZoom = 0.5f;
-
-    float startValue = 0;
-    float endValue = 10;
-    float valueToLerp;
 
     public PostProcessVolume glitch;
     public ShakyCame _cam;
 
-
-
-
-
-    private float counter = 0f;
-    private float duration = 2f;
-    private float incrementValue = 0.1f;
-    // Start is called before the first frame update
-    void Start()
+    public void PlayWin(Action after)
     {
-
         WinPart.Play();
-
-        StartCoroutine(Victory());
+        StartCoroutine(Victory(after));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-      
-    }
-
-    public IEnumerator Victory()
+    private IEnumerator Victory(Action after)
     {
 
         // imageToLerp.enabled = true;
@@ -62,18 +38,18 @@ public class End : MonoBehaviour
        // StartCoroutine(IncrementCounter());
         yield return new WaitForSeconds(2);
         imageToLerp.enabled = true;
-        StartCoroutine(LerpColor());
+        StartCoroutine(LerpColor(after));
+        yield return new WaitForSeconds(1);
+        WinPart.Stop();
         yield return null;
     }
 
-    private IEnumerator LerpColor()
+    private IEnumerator LerpColor(Action after)
     {
         float timeElapsed = 0f;
-        print("HERE");
 
         while (timeElapsed < lerpDuration)
         {
-            print("HERE AUSSI");
 
             float t = timeElapsed / lerpDuration;
             imageToLerp.color = Color.Lerp(initialColor, targetColor, t);
@@ -83,6 +59,8 @@ public class End : MonoBehaviour
 
             imageToLerp.color = targetColor;
         }
+        yield return new WaitForSeconds(2);
+        after();
     }
 
 
