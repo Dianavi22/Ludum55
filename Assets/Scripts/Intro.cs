@@ -11,11 +11,11 @@ public class Intro : MonoBehaviour
     [SerializeField] Button button;
 
     CanvasGroup _canvasGroup;
-    string[] introSentences = new List<string>() { "YOU ! Are a witch...", 
-        "And now it's time to talk to your boss", 
-        "But you dont remember how to summon him", 
-        "Fortunately, you have few notes about this spell !", 
-        "Good luck, your boss is waiting for you" }.ToArray();
+    string[] introSentences = new List<string>() { "VOUS êtes une sorciere !", 
+        "Et il est temps de faire un rapport a votre boss de tous les exploits que vous avez fait", 
+        "Malheureusement, votre étagère d'ingrédients vous est tombée dessus et depuis vous ne vous rappelez plus comment l'invoquer", 
+        "Habituée a cet incident, vous avez écrit quelques notes pour vous rappeler de l'ordre des ingrédients à placer sur le cercle !", 
+        "Dépêchez vous, votre boss s'impatiente !" }.ToArray();
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class Intro : MonoBehaviour
             text.text = introSentences[sentenceIndex];
             _canvasGroup.DOFade(1f, 2f).OnComplete(() =>
             {
-                _canvasGroup.DOFade(0f, 2f).SetDelay(3).OnComplete(() =>
+                _canvasGroup.DOFade(0f, 2f).SetDelay(1.5f).OnComplete(() =>
                 {
                     int nextSentence = sentenceIndex + 1;
                     _readSentence(nextSentence);

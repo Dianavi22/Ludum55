@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _ingredientsContainer;
     [SerializeField] TextMeshProUGUI _timerTxt;
     [SerializeField] MenuManager _menuManager;
+    [SerializeField] DialogManager _dialogManager;
+    [SerializeField] InvocationManager _invocationManager;
 
     GAMESTATE _state;
 
@@ -49,6 +51,8 @@ public class GameManager : MonoBehaviour
             else
             {
                 SetGameState(GAMESTATE.TIMEREND);
+                _InvokeFail();
+                
             }
         }
 
@@ -66,8 +70,15 @@ public class GameManager : MonoBehaviour
 
     void Play()
     {
-        SetGameState(GAMESTATE.PLAY);
+        SetGameState(GAMESTATE.DIALOG);
         _menuManager.GamePanel();
+
+        string[] sentences = new List<string>() { "Invoooque moooiii" }.ToArray();
+
+        _dialogManager.ShowDialog(sentences, Color.red, () =>
+        {
+            SetGameState(GAMESTATE.PLAY);
+        });
     }
 
     private void Menu()
@@ -154,12 +165,24 @@ public class GameManager : MonoBehaviour
 
     private void _InvokeSuccess()
     {
-        Debug.Log("YAY");
+        _Victory();
     }
 
     private void _InvokeFail()
     {
-        Debug.Log("Uh, looser");
+        SetGameState(GAMESTATE.INVOKE_FAIL);
+    }
+
+    private void _Victory()
+    {
+        SetGameState(GAMESTATE.VICTORY);
+        _menuManager.DefeatPanel();
+    }
+
+    private void _Defeat()
+    {
+        SetGameState(GAMESTATE.DEFEAT);
+        _menuManager.DefeatPanel();
     }
 
     private void SetGameState(GAMESTATE gameState)
