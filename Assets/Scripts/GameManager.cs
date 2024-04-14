@@ -55,12 +55,6 @@ public class GameManager : MonoBehaviour
                 
             }
         }
-
-        if(_state == GAMESTATE.INIT && Input.GetKeyUp("space"))
-        {
-            OnIntroEnded();
-        }
-        
     }
 
     public void OnIntroEnded()
@@ -171,6 +165,10 @@ public class GameManager : MonoBehaviour
     private void _InvokeFail()
     {
         SetGameState(GAMESTATE.INVOKE_FAIL);
+        _dialogManager.ShowDialog(new List<string>() { "On non, ce n'est pas mon patron..."}.ToArray(), Color.white , () =>
+        {
+            SetGameState(GAMESTATE.PLAY);
+        });
     }
 
     private void _Victory()

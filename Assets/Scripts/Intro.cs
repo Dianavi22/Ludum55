@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Intro : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] CanvasGroup supportText;
     [SerializeField] Button button;
 
     CanvasGroup _canvasGroup;
@@ -16,6 +17,8 @@ public class Intro : MonoBehaviour
         "Malheureusement, votre étagère d'ingrédients vous est tombée dessus et depuis vous ne vous rappelez plus comment l'invoquer", 
         "Habituée a cet incident, vous avez écrit quelques notes pour vous rappeler de l'ordre des ingrédients à placer sur le cercle !", 
         "Dépêchez vous, votre boss s'impatiente !" }.ToArray();
+    int _currentSentencesIndex = 0;
+    bool _introEnded = false;
 
     private void Awake()
     {
@@ -29,24 +32,37 @@ public class Intro : MonoBehaviour
     void Start()
     {
         _readSentence(0);
+        supportText.alpha = 0f;
     }
 
-   void _readSentence(int sentenceIndex)
+    private void Update()
     {
-        if(sentenceIndex < introSentences.Length)
+        if (Input.GetKeyUp(KeyCode.Space) && !_introEnded)
+        {
+            _canvasGroup.DOFade(0f, 0.8f).OnComplete(() =>
+            {
+                _readSentence(_currentSentencesIndex + 1);
+            });
+        }
+    }
+
+
+    void _readSentence(int sentenceIndex)
+   {
+        supportText.DOKill();
+        supportText.alpha = 0;
+
+        _currentSentencesIndex = sentenceIndex;
+
+        if(_currentSentencesIndex < introSentences.Length)
         {
             text.text = introSentences[sentenceIndex];
-            _canvasGroup.DOFade(1f, 2f).OnComplete(() =>
-            {
-                _canvasGroup.DOFade(0f, 2f).SetDelay(1.5f).OnComplete(() =>
-                {
-                    int nextSentence = sentenceIndex + 1;
-                    _readSentence(nextSentence);
-                });
-            });
+            _canvasGroup.DOFade(1f, 2f);
+            supportText.DOFade(1, 2f).SetDelay(4f).SetLoops(-1, LoopType.Yoyo);
         }
         else
         {
+            _introEnded = true;
             button.GetComponent<CanvasGroup>().DOFade(1f, 0.8f).OnComplete(() =>
             {
                 button.interactable = true;
