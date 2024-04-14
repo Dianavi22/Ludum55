@@ -10,6 +10,7 @@ public class InvocationManager : MonoBehaviour
     [SerializeField] CanvasGroup panel;
     [SerializeField] RectTransform invocation;
     [SerializeField] Image invocationImage;
+    [SerializeField] End end;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class InvocationManager : MonoBehaviour
 
     public void InvocationSuccess(Action afterInvocation)
     {
-        Show(afterInvocation);
+        end.PlayWin(afterInvocation);
     }
 
     public void Defeat(Action afterInvocation)
