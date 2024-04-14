@@ -80,6 +80,10 @@ public class GameManager : MonoBehaviour
         Play();
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     void Play()
     {
         SetGameState(GAMESTATE.DIALOG);
