@@ -5,8 +5,12 @@ using UnityEngine;
 public class Loose : MonoBehaviour
 {
     [SerializeField] GameObject camera;
-  [SerializeField] GameObject LoosePart;
- //   [SerializeField] ShakyCame shaky;
+    [SerializeField] GameObject LoosePart;
+    [SerializeField] InvocationManager _invocationManager;
+    [SerializeField] GameObject _invisibleZone;
+    [SerializeField] MenuManager _menuManager;
+    [SerializeField] DialogManager _dialog;
+    //   [SerializeField] ShakyCame shaky;
 
     [SerializeField] bool isFinish = false;
 
@@ -34,7 +38,12 @@ public class Loose : MonoBehaviour
         LoosePart.SetActive(true);
         yield return new WaitForSeconds(5f);
         ZoomCam();
-        yield return null;
+        yield return new WaitForSeconds(1.5f);
+
+        _menuManager.DefeatPanel();
+        _invisibleZone.SetActive(true);
+        _invocationManager.ResetInvocation();
+        _dialog.HideDialog();
     }
 
     public void ZoomCam()

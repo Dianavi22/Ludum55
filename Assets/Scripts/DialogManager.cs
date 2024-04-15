@@ -45,6 +45,11 @@ public class DialogManager : MonoBehaviour
         _readSentence();
     }
 
+    public void HideDialog()
+    {
+        _reset();
+    }
+
     void _readSentence()
     {
         if (_onUse)

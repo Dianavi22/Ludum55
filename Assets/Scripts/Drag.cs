@@ -7,8 +7,11 @@ using UnityEngine.EventSystems;
 public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas _canvas;
+    [SerializeField] SfxManager _sfxManager;
+
     private Vector2 _defaultPos;
     private bool _canDrag = true;
+    private bool _dragged = false;
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
 
@@ -48,6 +51,8 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
     {
         if(_canDrag)
         {
+            _dragged = true;
+            _sfxManager.TakeItem();
             _canvasGroup.alpha = .6f;
             _canvasGroup.blocksRaycasts = false;
         }
@@ -55,8 +60,10 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
+       if(_dragged) _sfxManager.DropItem();
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
+        _dragged = false;
     }
 
     public void OnDrag(PointerEventData eventData)

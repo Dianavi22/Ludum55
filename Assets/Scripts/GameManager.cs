@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _timer;
     [SerializeField] Canvas _canvas;
     [SerializeField] Emplacement[] _emplacements;
+    [SerializeField] Ingredient[] _ingredients;
     [SerializeField] GameObject _ingredientsZone;
     [SerializeField] GameObject _emplacementsZone;
     [SerializeField] Note[] _notes;
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] InvocationManager _invocationManager;
     [SerializeField] GameObject _invisibleZone;
     [SerializeField] SoundManager _soundManager;
+    [SerializeField] SfxManager _sfxManager;
+    [SerializeField] ShakyCame _cam;
 
     GAMESTATE _state;
 
@@ -36,8 +39,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //Menu();
-        Play();
+        Menu();
+        //_Defeat();
     }
 
     private void Update()
@@ -217,7 +220,7 @@ public class GameManager : MonoBehaviour
     {
         _invokeButton.gameObject.SetActive(false);
         _ingredientsZone.SetActive(false);
-        _emplacementsZone.SetActive(false); 
+        _emplacementsZone.SetActive(false);
 
         _invocationManager.InvocationSuccess(() =>
         {
@@ -231,11 +234,14 @@ public class GameManager : MonoBehaviour
 
     private void _InvokeFail()
     {
+        _cam.Shake(0.5f, 0.04f);
         _invocationManager.InvocationFail(() =>
         {
             _dialogManager.ShowDialog(new List<string>() { "On non, ce n'est pas mon patron..." }.ToArray(), Color.white, () =>
             {
+                ResetEmplacements();
                 Game();
+                _invocationManager.ResetInvocation();
             });
         });
     }
@@ -252,15 +258,13 @@ public class GameManager : MonoBehaviour
     private void _Defeat()
     {
         SetGameState(GAMESTATE.DEFEAT);
-        _invocationManager.InvocationFail(() =>
-        {
-            _dialogManager.ShowDialog(new List<string>() { "Oh non..." }.ToArray(), Color.white, () =>
-            {
-                _menuManager.DefeatPanel();
-                _invisibleZone.SetActive(true);
-                _invocationManager.ResetInvocation();
-            });
-        });
+        _ingredientsZone.SetActive(false);
+        _emplacementsZone.SetActive(false);
+        _dialogManager.ShowDialog(new List<string>() { "Oh non..." }.ToArray(), Color.white, () =>{});
+
+        _cam.Shake(5f, 0.1f);
+
+        _invocationManager.Defeat(() =>{});
 
         _soundManager.DisablePendulum();
     }
@@ -276,5 +280,20 @@ public class GameManager : MonoBehaviour
 
         _timer = _duration;
         _timerTxt.text = "";
+        
+        ResetEmplacements();
+    }
+
+    private void ResetEmplacements()
+    {
+        foreach (var item in _emplacements.Where(e => !e.isEmpty()))
+        {
+            item.emptyEmplacement();
+        }
+
+        foreach (var item in _ingredients.Where(i => i.isUsed()))
+        {
+            item.setUse(false);
+        }
     }
 }
