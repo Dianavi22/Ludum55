@@ -10,22 +10,16 @@ public class Loose : MonoBehaviour
     [SerializeField] GameObject _invisibleZone;
     [SerializeField] MenuManager _menuManager;
     [SerializeField] DialogManager _dialog;
+    [SerializeField] GameObject _emplacementsZone;
 
-    public float speed = 100f;
+    [SerializeField] float speed = 10f;
 
     private float journeyLength;
-
-    private Vector3 defaultPos;
-
-    private void Awake()
-    {
-        defaultPos = camera.transform.position;
-    }
 
 
     private void Start()
     {
-        journeyLength = Vector3.Distance(defaultPos, new Vector3(defaultPos.x, defaultPos.y, 25));
+        journeyLength = Vector3.Distance(camera.transform.position, new Vector3(camera.transform.position.x, camera.transform.position.y, 25));
     }
 
     public void PlayLoose()
@@ -37,6 +31,7 @@ public class Loose : MonoBehaviour
     {
         LoosePart.SetActive(true);
         yield return new WaitForSeconds(5f);
+        _emplacementsZone.SetActive(false);
          StartCoroutine(ZoomCam());
         yield return new WaitForSeconds(1.5f);
 
@@ -57,15 +52,14 @@ public class Loose : MonoBehaviour
 
         float timeElapsed = 0f;
 
-        while (true)
+        while (timeElapsed < 2)
         {
             
-            timeElapsed += Time.deltaTime;
-            float fractionOfJourney = (timeElapsed / journeyLength) * speed;
+            timeElapsed += Time.deltaTime * speed;
+            float fractionOfJourney = (timeElapsed / journeyLength);
             camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(camera.transform.position.x, camera.transform.position.y, 30), fractionOfJourney);
 
             yield return null;
-            camera.transform.position = defaultPos;
         }
 
     }

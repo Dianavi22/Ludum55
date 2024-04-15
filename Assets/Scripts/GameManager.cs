@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Emplacement[] _emplacements;
     [SerializeField] Ingredient[] _ingredients;
     [SerializeField] GameObject _ingredientsZone;
-    //[SerializeField] GameObject _emplacementsZone;
+    [SerializeField] GameObject _emplacementsZone;
     [SerializeField] Note[] _notes;
     [SerializeField] Button _invokeButton;
     [SerializeField] GameObject _ingredientsContainer;
@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] SoundManager _soundManager;
     [SerializeField] SfxManager _sfxManager;
     [SerializeField] ShakyCame _cam;
+    [SerializeField] Camera _camera;
+    [SerializeField] Image imageToLerp;
 
     GAMESTATE _state;
 
@@ -44,7 +46,8 @@ public class GameManager : MonoBehaviour
         //Menu();
         //_Defeat();
         //Game();
-        Play();
+        //Play();
+        _InvokeSuccess();
     }
 
     private void Update()
@@ -294,12 +297,17 @@ public class GameManager : MonoBehaviour
 
         _timer = _duration;
         _timerTxt.text = "";
-        
+
+        _camera.transform.position = new Vector3(0, 1, -10);
+        imageToLerp.enabled = false;    
         ResetEmplacements();
     }
 
     private void ResetEmplacements()
     {
+        _emplacementsZone.SetActive(true);
+        _ingredientsZone.SetActive(true);
+
         foreach (var item in _emplacements.Where(e => !e.isEmpty()))
         {
             item.emptyEmplacement();
