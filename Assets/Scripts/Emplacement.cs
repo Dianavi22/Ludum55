@@ -8,6 +8,7 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
     [SerializeField] GameManager _gameManager;
     [SerializeField] Sprite _emptySprite;
     [SerializeField] INGREDIENT_TYPE _accept;
+    [SerializeField] ParticleSystem _dropParticle;
 
     private Image _image;
     private Drag _drag;
@@ -96,9 +97,11 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
             if (eventData.pointerDrag.GetComponent<Ingredient>() && eventData.pointerDrag.GetComponent<Drag>().CanDrag())
             {
                 useEmplacement(eventData.pointerDrag.GetComponent<Ingredient>());
+                _dropParticle.Play();
             } else if (eventData.pointerDrag.GetComponent<Emplacement>() && _isEmpty && eventData.pointerDrag.GetComponent<Drag>().CanDrag())
             {
                 moveEmplacement(eventData.pointerDrag.GetComponent<Emplacement>());
+                _dropParticle.Play();
             }
             else
             {

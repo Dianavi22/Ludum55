@@ -16962,7 +16962,6 @@ MonoBehaviour:
   _invisibleZone: {fileID: 207931843}
   _menuManager: {fileID: 949568862}
   _dialog: {fileID: 237914140}
-  isFinish: 0
   speed: 1
 --- !u!114 &289435388 stripped
 MonoBehaviour:
@@ -39175,7 +39174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 60
-  _timer: 15
+  _timer: 30
   _canvas: {fileID: 1186425197}
   _emplacements:
   - {fileID: 1078728941}
