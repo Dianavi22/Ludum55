@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-            if(_state == GAMESTATE.GAME)
+            if(_state == GAMESTATE.GAME || _state == GAMESTATE.DIALOG)
             {
                 Pause();
             }
