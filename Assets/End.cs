@@ -28,15 +28,9 @@ public class End : MonoBehaviour
 
     private IEnumerator Victory(Action after)
     {
-
-        // imageToLerp.enabled = true;
-        // StartCoroutine(LerpColor());
-        yield return new WaitForSeconds(2);
-        _cam.isShaking = true;
+        _cam.Shake(4f,0.1f);
         // glitch.weight = 1;
-
-       // StartCoroutine(IncrementCounter());
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         imageToLerp.enabled = true;
         StartCoroutine(LerpColor(after));
         yield return new WaitForSeconds(1);
@@ -59,7 +53,6 @@ public class End : MonoBehaviour
 
             imageToLerp.color = targetColor;
         }
-        yield return new WaitForSeconds(2);
         after();
     }
 

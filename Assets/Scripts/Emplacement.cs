@@ -11,9 +11,8 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 
     private Image _image;
     private Drag _drag;
-    private bool _isEmpty;
+    private bool _isEmpty = true;
     private Ingredient _ingredient;
-    private bool _interactable;
 
     private void Awake()
     {
@@ -21,9 +20,6 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
         _image.sprite = _emptySprite;
         _drag = GetComponent<Drag>();
         _drag.DisableDrag();
-
-        _isEmpty = true;
-        _interactable = true;
     }
 
     private void useEmplacement(Ingredient ingredient)
@@ -130,39 +126,19 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        if (_interactable)
-        {
-           _hoverStart(); 
-        }
+        _hoverStart(); 
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
-        if (_interactable)
-        { 
-            _hoverEnd();
-        }
+        _hoverEnd();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right && _interactable)
+        if(eventData.button == PointerEventData.InputButton.Right)
         {
             emptyEmplacement();
-        }
-    }
-
-    public void DisableInteractions()
-    {
-        _interactable = false;
-        _drag.DisableDrag();
-    }
-    public void EnableInteractions()
-    {
-        _interactable = true;
-        if (!_isEmpty)
-        {
-            _drag.EnableDrag();
         }
     }
 }

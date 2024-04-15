@@ -66,6 +66,11 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         return _type;
     }
 
+    public bool isUsed()
+    {
+        return _inUse;
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
