@@ -10,6 +10,7 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
     [SerializeField] private INGREDIENT_TYPE _type;
     [SerializeField] public Sprite sprite;
     [SerializeField] CanvasGroup _noteCanvas;
+    [SerializeField] SfxManager _sfxManager;
 
     private Drag _drag;
     private Image _image;
@@ -31,13 +32,12 @@ public class Ingredient : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         {
             if (_hovered && !_onNote)
             {
-                Debug.Log("SHOW NOTE");
+                _sfxManager.PageOpen();
                 _noteCanvas.alpha = 1f;
                 _onNote = true;
             }
-            else
-            {
-                Debug.Log("HIDE NOTE");
+            else if(_onNote){
+                    _sfxManager.PageClose();
                 _noteCanvas.alpha = 0f;
                 _onNote = false;
             }

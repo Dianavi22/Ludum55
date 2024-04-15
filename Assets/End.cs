@@ -54,6 +54,7 @@ public class End : MonoBehaviour
             imageToLerp.color = targetColor;
         }
         after();
+        imageToLerp.enabled=false;
     }
 
 

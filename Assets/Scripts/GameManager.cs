@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] InvocationManager _invocationManager;
     [SerializeField] GameObject _invisibleZone;
     [SerializeField] SoundManager _soundManager;
+    [SerializeField] SfxManager _sfxManager;
     [SerializeField] ShakyCame _cam;
 
     GAMESTATE _state;
