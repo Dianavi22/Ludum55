@@ -14,6 +14,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] TypeSentence typeSentence;
     string[] _sentences;
     int _currentSentenceIndex = 0;
+    bool _disableSound = false;
     Action _afterDialog;
 
     bool _onUse = false;
@@ -41,7 +42,7 @@ public class DialogManager : MonoBehaviour
         _afterDialog = afterDialog;
         _onUse = true;
         dialogContainer.blocksRaycasts = true;
-
+        _disableSound = dialogColor == Color.white;
         _readSentence();
     }
 
@@ -56,11 +57,10 @@ public class DialogManager : MonoBehaviour
         {
             if (_currentSentenceIndex < _sentences.Length)
             {
-                typeSentence.WriteMachinEffect(_sentences[_currentSentenceIndex], text, 0.05f);
+                typeSentence.WriteMachinEffect(_sentences[_currentSentenceIndex], text, 0.05f, _disableSound);
             }
             else
             {
-                dialogContainer.alpha = 0;
                 _afterDialog();
                 _reset();
             }
@@ -76,10 +76,12 @@ public class DialogManager : MonoBehaviour
 
     void _reset()
     {
+        dialogContainer.alpha = 0;
         _currentSentenceIndex = 0;
         _sentences = new string[0];
         _afterDialog = null;
         _onUse = false;
         dialogContainer.blocksRaycasts = false;
+        _disableSound = false;
     }
 }

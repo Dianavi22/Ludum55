@@ -15,23 +15,23 @@ public class TypeSentence : MonoBehaviour
     private float _timeBetweenChar; // Temps en Seconde
 
 
-    public AudioClip[] voice;
+    [SerializeField] AudioClip[] voice;
     public AudioSource audioSource;
 
-    public void WriteMachinEffect(string _currentTextToShow, TMP_Text _currentTextPlace, float _currentTimeBetweenChar) // Fonction à appeler depuis un autre script
+    public void WriteMachinEffect(string _currentTextToShow, TMP_Text _currentTextPlace, float _currentTimeBetweenChar, bool disableSound = false) // Fonction à appeler depuis un autre script
     {
         _textToShow = _currentTextToShow;
         _textPlace = _currentTextPlace;
         _timeBetweenChar = _currentTimeBetweenChar;
-        StartCoroutine(TypeCurrentSentence(_textToShow, _textPlace));
+        StartCoroutine(TypeCurrentSentence(_textToShow, _textPlace, disableSound));
     }
-    IEnumerator TypeCurrentSentence(string sentence, TMP_Text place)
+    IEnumerator TypeCurrentSentence(string sentence, TMP_Text place, bool disableSound)
     {
         foreach (char letter in sentence.ToCharArray())
         {
             yield return new WaitForSeconds(_timeBetweenChar);
             place.text += letter;
-            audioSource.PlayOneShot(voice[Random.Range(0, 4)]);
+          if(!disableSound)  audioSource.PlayOneShot(voice[Random.Range(0, voice.Length)]);
             yield return null;
         }
     }

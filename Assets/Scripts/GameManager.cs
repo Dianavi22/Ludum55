@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogManager _dialogManager;
     [SerializeField] InvocationManager _invocationManager;
     [SerializeField] GameObject _invisibleZone;
+    [SerializeField] GameObject _explications;
     [SerializeField] SoundManager _soundManager;
     [SerializeField] SfxManager _sfxManager;
     [SerializeField] ShakyCame _cam;
@@ -35,12 +36,14 @@ public class GameManager : MonoBehaviour
         _invokeButton.interactable = false;
         _invokeButton.GetComponent<RectTransform>().localScale = Vector3.zero; 
         _invisibleZone.SetActive(true);
+        _explications.SetActive(false);
     }
 
     private void Start()
     {
-        Menu();
-        //_Defeat();
+        //Menu();
+        _Defeat();
+        //Game();
     }
 
     private void Update()
@@ -99,7 +102,7 @@ public class GameManager : MonoBehaviour
 
         _dialogManager.ShowDialog(sentences, Color.red, () =>
         {
-            Game(start : true);
+            _explications.SetActive(true);
         });
     }
 
@@ -130,6 +133,12 @@ public class GameManager : MonoBehaviour
         if(!start) _menuManager.GamePanel();
         _invisibleZone.SetActive(false);
         _soundManager.ActivePendulum();
+    }
+
+    public void OnExplicationOkButtonClicked()
+    {
+        Game(start: true);
+        _explications.SetActive(false);
     }
 
     public void OnEmplacementUsed(Emplacement emplacement)

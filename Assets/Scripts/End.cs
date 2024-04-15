@@ -31,6 +31,7 @@ public class End : MonoBehaviour
     {
         LoosePart.SetActive(true);
         loose.SetActive(true);
+        loose.GetComponent<Loose>().PlayLoose();
     }
 
     private IEnumerator Victory(Action after)
