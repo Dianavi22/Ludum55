@@ -5,12 +5,18 @@ using UnityEngine;
 // Ce script est a placer dans la hiérarchie (ou dans le canva directement)
 // Il contient une fonction qui peut etre appelee partout s'il a la reference de se script 
 // Il faut lui passer les parammtres : Textes a ecrire, emplacement du texte, secondes entre chaque caracteres
+
+
 public class TypeSentence : MonoBehaviour
 {
-   // Parametres 
-   private TMP_Text _textPlace;
-   private string _textToShow;
-   private float _timeBetweenChar; // Temps en Seconde
+    // Parametres 
+    private TMP_Text _textPlace;
+    private string _textToShow;
+    private float _timeBetweenChar; // Temps en Seconde
+
+
+    public AudioClip[] voice;
+    public AudioSource audioSource;
 
     public void WriteMachinEffect(string _currentTextToShow, TMP_Text _currentTextPlace, float _currentTimeBetweenChar) // Fonction à appeler depuis un autre script
     {
@@ -25,6 +31,7 @@ public class TypeSentence : MonoBehaviour
         {
             yield return new WaitForSeconds(_timeBetweenChar);
             place.text += letter;
+            audioSource.PlayOneShot(voice[Random.Range(0, 4)]);
             yield return null;
         }
     }
