@@ -12,5 +12,5 @@ public enum GAMESTATE
     INIT,
     TIMEREND,
     INVOKE,
-    DIALOG
+    DIALOG,
 }
