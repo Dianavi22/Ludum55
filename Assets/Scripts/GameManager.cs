@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Menu();
+        //_Defeat();
     }
 
     private void Update()
@@ -257,15 +258,13 @@ public class GameManager : MonoBehaviour
     private void _Defeat()
     {
         SetGameState(GAMESTATE.DEFEAT);
-        _invocationManager.InvocationFail(() =>
-        {
-            _dialogManager.ShowDialog(new List<string>() { "Oh non..." }.ToArray(), Color.white, () =>
-            {
-                _menuManager.DefeatPanel();
-                _invisibleZone.SetActive(true);
-                _invocationManager.ResetInvocation();
-            });
-        });
+        _ingredientsZone.SetActive(false);
+        _emplacementsZone.SetActive(false);
+        _dialogManager.ShowDialog(new List<string>() { "Oh non..." }.ToArray(), Color.white, () =>{});
+
+        _cam.Shake(5f, 0.1f);
+
+        _invocationManager.Defeat(() =>{});
 
         _soundManager.DisablePendulum();
     }

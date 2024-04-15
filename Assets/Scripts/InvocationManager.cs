@@ -25,7 +25,8 @@ public class InvocationManager : MonoBehaviour
 
     public void Defeat(Action afterInvocation)
     {
-        Show(afterInvocation);
+        Show(() => { });
+        end.PlayLoose();
     }
 
     public void ResetInvocation()

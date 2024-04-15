@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class End : MonoBehaviour
 {
-
     public Image imageToLerp;
     public Color targetColor;
     public float lerpDuration = 1f;
@@ -16,9 +15,11 @@ public class End : MonoBehaviour
 
     [SerializeField] GameObject WinLight;
     [SerializeField] ParticleSystem WinPart;
+    [SerializeField] GameObject LoosePart;
 
-    public PostProcessVolume glitch;
-    public ShakyCame _cam;
+    [SerializeField] GameObject loose;
+
+    public ShakyCame _shakyCam;
 
     public void PlayWin(Action after)
     {
@@ -26,9 +27,15 @@ public class End : MonoBehaviour
         StartCoroutine(Victory(after));
     }
 
+    public void PlayLoose()
+    {
+        LoosePart.SetActive(true);
+        loose.SetActive(true);
+    }
+
     private IEnumerator Victory(Action after)
     {
-        _cam.Shake(4f,0.1f);
+        _shakyCam.Shake(4f,0.1f);
         // glitch.weight = 1;
         yield return new WaitForSeconds(2.5f);
         imageToLerp.enabled = true;
@@ -56,8 +63,6 @@ public class End : MonoBehaviour
         after();
         imageToLerp.enabled=false;
     }
-
-
 
 
 }
