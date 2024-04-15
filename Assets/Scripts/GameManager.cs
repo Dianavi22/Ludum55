@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] SoundManager _soundManager;
     [SerializeField] SfxManager _sfxManager;
     [SerializeField] ShakyCame _cam;
+    [SerializeField] Camera _camera;
+    [SerializeField] Image imageToLerp;
 
     GAMESTATE _state;
 
@@ -42,15 +44,17 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //Menu();
-        _Defeat();
+        //_Defeat();
         //Game();
+        //Play();
+        _InvokeSuccess();
     }
 
     private void Update()
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-            if(_state == GAMESTATE.GAME)
+            if(_state == GAMESTATE.GAME || _state == GAMESTATE.DIALOG)
             {
                 Pause();
             }
@@ -187,6 +191,12 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GAMESTATE.INVOKE);
         _invisibleZone.SetActive(true);
+
+        foreach (var item in _emplacements)
+        {
+            if (!item.isEmpty()) item.consumeEmplacement();
+        }
+
         if (_emplacements.Count(e => e.isOk()) == _emplacements.Length)
         {
             _InvokeSuccess();
@@ -229,7 +239,6 @@ public class GameManager : MonoBehaviour
     {
         _invokeButton.gameObject.SetActive(false);
         _ingredientsZone.SetActive(false);
-        _emplacementsZone.SetActive(false);
 
         _invocationManager.InvocationSuccess(() =>
         {
@@ -268,7 +277,6 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GAMESTATE.DEFEAT);
         _ingredientsZone.SetActive(false);
-        _emplacementsZone.SetActive(false);
         _dialogManager.ShowDialog(new List<string>() { "Oh non..." }.ToArray(), Color.white, () =>{});
 
         _cam.Shake(5f, 0.1f);
@@ -289,12 +297,17 @@ public class GameManager : MonoBehaviour
 
         _timer = _duration;
         _timerTxt.text = "";
-        
+
+        _camera.transform.position = new Vector3(0, 1, -10);
+        imageToLerp.enabled = false;    
         ResetEmplacements();
     }
 
     private void ResetEmplacements()
     {
+        _emplacementsZone.SetActive(true);
+        _ingredientsZone.SetActive(true);
+
         foreach (var item in _emplacements.Where(e => !e.isEmpty()))
         {
             item.emptyEmplacement();
