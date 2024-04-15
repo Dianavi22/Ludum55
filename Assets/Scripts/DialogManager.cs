@@ -61,7 +61,6 @@ public class DialogManager : MonoBehaviour
             }
             else
             {
-                dialogContainer.alpha = 0;
                 _afterDialog();
                 _reset();
             }
@@ -77,6 +76,7 @@ public class DialogManager : MonoBehaviour
 
     void _reset()
     {
+        dialogContainer.alpha = 0;
         _currentSentenceIndex = 0;
         _sentences = new string[0];
         _afterDialog = null;

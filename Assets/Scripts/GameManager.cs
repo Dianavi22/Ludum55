@@ -41,8 +41,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Menu();
-        //_Defeat();
+        //Menu();
+        _Defeat();
+        //Game();
     }
 
     private void Update()
