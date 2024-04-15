@@ -9,6 +9,7 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
     [SerializeField] Sprite _emptySprite;
     [SerializeField] INGREDIENT_TYPE _accept;
     [SerializeField] ParticleSystem _dropParticle;
+    [SerializeField] ParticleSystem _consumeParticle;
 
     private Image _image;
     private Drag _drag;
@@ -70,6 +71,12 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
 
             _gameManager.OnEmplacementEmpty(this);
         }
+    }
+
+    public void consumeEmplacement()
+    {
+        _consumeParticle.Play();
+        emptyEmplacement();
     }
 
     public bool isOk()

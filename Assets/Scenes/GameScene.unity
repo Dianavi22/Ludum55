@@ -39174,7 +39174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 60
-  _timer: 30
+  _timer: 60
   _canvas: {fileID: 1186425197}
   _emplacements:
   - {fileID: 1078728941}
