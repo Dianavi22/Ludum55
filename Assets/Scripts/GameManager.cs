@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
         SetGameState(GAMESTATE.DIALOG);
         _menuManager.GamePanel();
 
-        string[] sentences = new List<string>() { "Invoooque moooiii" }.ToArray();
+        string[] sentences = new List<string>() { "Caaaalll meeeee" }.ToArray();
 
         _dialogManager.ShowDialog(sentences, Color.red, () =>
         {
@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
 
         _invocationManager.InvocationSuccess(() =>
         {
-            _dialogManager.ShowDialog(new List<string>() { "Bonjour..." }.ToArray(), Color.red, () =>
+            _dialogManager.ShowDialog(new List<string>() { "Hello there..." }.ToArray(), Color.red, () =>
             {
                 _Victory(); 
                 _invocationManager.ResetInvocation();
@@ -255,7 +255,7 @@ public class GameManager : MonoBehaviour
         _cam.Shake(0.5f, 0.04f);
         _invocationManager.InvocationFail(() =>
         {
-            _dialogManager.ShowDialog(new List<string>() { "On non, ce n'est pas mon patron..." }.ToArray(), Color.white, () =>
+            _dialogManager.ShowDialog(new List<string>() { "On no, it's not my boss..." }.ToArray(), Color.white, () =>
             {
                 ResetEmplacements();
                 Game();
@@ -277,7 +277,7 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GAMESTATE.DEFEAT);
         _ingredientsZone.SetActive(false);
-        _dialogManager.ShowDialog(new List<string>() { "Oh non..." }.ToArray(), Color.white, () =>{});
+        _dialogManager.ShowDialog(new List<string>() { "Oh no..." }.ToArray(), Color.white, () =>{});
 
         _cam.Shake(5f, 0.1f);
 

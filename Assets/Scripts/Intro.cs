@@ -12,11 +12,11 @@ public class Intro : MonoBehaviour
     [SerializeField] Button button;
 
     CanvasGroup _canvasGroup;
-    string[] introSentences = new List<string>() { "VOUS êtes une sorciere !", 
-        "Et il est temps de faire un rapport a votre boss de tous les exploits que vous avez fait", 
-        "Malheureusement, votre étagère d'ingrédients vous est tombée dessus et depuis vous ne vous rappelez plus comment l'invoquer", 
-        "Habituée a cet incident, vous avez écrit quelques notes pour vous rappeler de l'ordre des ingrédients à placer sur le cercle !", 
-        "Dépêchez vous, votre boss s'impatiente !" }.ToArray();
+    string[] introSentences = new List<string>() { "YOU are a witch!",
+        "And now it's time to report to your boss on all the amazing things you've done.",
+        "Unfortunately, your ingredient shelf fell on you and you can't remember how to summon him anymore.",
+        "Familiar with this incident, you've written a few notes to remind you of the order of ingredients to place on the circle!",
+        "Hurry up, your boss is getting impatient!" }.ToArray();
     int _currentSentencesIndex = 0;
     bool _introEnded = false;
 

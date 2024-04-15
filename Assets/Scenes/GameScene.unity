@@ -6094,7 +6094,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "La plus focus des d\xE9veloppeurs"
+  m_text: The most focused developer and musician
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -16444,7 +16444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Perdu...
+  m_text: You failed...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -22654,7 +22654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Invocation R\xE9ussie !"
+  m_text: You've summoned your Boss !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -23938,8 +23938,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Tant que \xE7a ne fonctionne pas je ne vais pas me coucher ! ... Merde
-    il est 10h\""
+  m_text: '"I''m not going to bed until it works! ... Shit, it''s 10 o''clock"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -24659,8 +24658,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Je me fiche de l\xE0 o\xF9 faut mettre les ombres et les \xE9claircies,
-    je les place OU JE VEUX\""
+  m_text: '"I don''t care where I place the shadows and highlights, I place them
+    WHERE I WANT."'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -25295,7 +25294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rejouer
+  m_text: Retry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -28156,7 +28155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rejouer
+  m_text: Retry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -34889,7 +34888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "La plus stress\xE9e des artistes "
+  m_text: The most stressed SFX and VFX artist
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -36614,7 +36613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.916}
   m_AnchorMin: {x: 0, y: 0.8}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 385, y: -270}
+  m_AnchoredPosition: {x: 391, y: -285}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1803969363
@@ -37190,7 +37189,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RICANES 2
+  m_text: Clumsy Witch
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
@@ -38964,7 +38963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Appuyez sur espace pour passer '
+  m_text: Press space to skip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
   m_sharedMaterial: {fileID: 8240170593373830032, guid: 7b22dbd958c067c46bb7b19703fb58cc, type: 2}
