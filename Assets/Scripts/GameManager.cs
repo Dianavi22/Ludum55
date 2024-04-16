@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour
         //Menu();
         //_Defeat();
         //Game();
-        //Play();
-        _InvokeSuccess();
+        Play();
+        //_InvokeSuccess();
     }
 
     private void Update()

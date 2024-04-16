@@ -6184,8 +6184,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: efea7edd37b761d4ab5c997503183779, type: 3}
     - target: {fileID: 3623080042540113515, guid: 75cd1336eb9852649b37eaa65c3ccf5d, type: 3}
+      propertyPath: desc
+      value: I can't remember where this flask came from... I should have someone
+        taste it, just to find out what's in it. Maybe the boss would be interested?
+        I should try to place it with the tea and my powder... Maybe it would make
+        a great drink!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623080042540113515, guid: 75cd1336eb9852649b37eaa65c3ccf5d, type: 3}
       propertyPath: type
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623080042540113515, guid: 75cd1336eb9852649b37eaa65c3ccf5d, type: 3}
+      propertyPath: title
+      value: Suspicious Flask
       objectReference: {fileID: 0}
     - target: {fileID: 5656870050380370221, guid: 75cd1336eb9852649b37eaa65c3ccf5d, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16743,8 +16754,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 460864165}
     m_Modifications:
     - target: {fileID: 1405825481251941906, guid: 99054788dae163045891d1bfc7991ef0, type: 3}
+      propertyPath: desc
+      value: I like this plant, I think it's a lovely one. It's probably a holy plant.
+        So it fits perfectly in my circle! It doesn't seem to have much effect at
+        the edges of the circle, but its power is great when it's close to the eyes.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405825481251941906, guid: 99054788dae163045891d1bfc7991ef0, type: 3}
       propertyPath: type
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405825481251941906, guid: 99054788dae163045891d1bfc7991ef0, type: 3}
+      propertyPath: title
+      value: Holy Holly
       objectReference: {fileID: 0}
     - target: {fileID: 4349327181010469357, guid: 99054788dae163045891d1bfc7991ef0, type: 3}
       propertyPath: m_Sprite
@@ -16956,7 +16977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec5c8da0bc1dca46b79aed7443bf398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 963194225}
+  _camera: {fileID: 963194225}
   LoosePart: {fileID: 114696991}
   _invocationManager: {fileID: 1065222513}
   _invisibleZone: {fileID: 207931843}
@@ -17075,12 +17096,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2217160436448423936, guid: 48a8f868960f02149973c844c39b601c, type: 3}
       propertyPath: desc
-      value: "Contenance : 1374 PO Mati\xE8re : Cuire de goblin Mati\xE8re du truc
-        en or qui tient les pi\xE8ces : Quartz Poids : 4.905N Masse : 500g *peut
-        contenir des dents, des p\xE9tales, des myrtilles des petits objets, \xE0
-        mettre \xE0 l'oppos\xE9 du doigt, peut aussi contenir des particules unity,
-        du th\xE9, ces capsules de bi\xE8res. \xE0 ne pas oublier pour faire ses
-        courses.  Ne pas taper"
+      value: 'Capacity: 1374 PO Material: Goblin leather. Material of the gold thing
+        that holds the coins: Quartz Weight: 4.905N Mass: 500g *may contain teeth,
+        petals, blueberries, small objects, to be placed opposite the finger, may
+        also contain unity particles, tea, these beer capsules. not to be forgotten
+        when shopping. Do not punch'
       objectReference: {fileID: 0}
     - target: {fileID: 2217160436448423936, guid: 48a8f868960f02149973c844c39b601c, type: 3}
       propertyPath: type
@@ -17088,7 +17108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2217160436448423936, guid: 48a8f868960f02149973c844c39b601c, type: 3}
       propertyPath: title
-      value: Bourses
+      value: Goblin Part
       objectReference: {fileID: 0}
     - target: {fileID: 3539120668357206015, guid: 48a8f868960f02149973c844c39b601c, type: 3}
       propertyPath: m_Sprite
@@ -17666,8 +17686,18 @@ PrefabInstance:
       value: 30.311005
       objectReference: {fileID: 0}
     - target: {fileID: 4847730928265700204, guid: 42863de80a91d0346b001c21691bac88, type: 3}
+      propertyPath: desc
+      value: A witch has to drink tea. It's part of her way of life. Once brewed,
+        the tea bag leaves a pleasant scent in the circle, and from where I place
+        it, the scent can embalm all the other elements!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847730928265700204, guid: 42863de80a91d0346b001c21691bac88, type: 3}
       propertyPath: type
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847730928265700204, guid: 42863de80a91d0346b001c21691bac88, type: 3}
+      propertyPath: title
+      value: ' TwinThings Tea'
       objectReference: {fileID: 0}
     - target: {fileID: 7826989301351173267, guid: 42863de80a91d0346b001c21691bac88, type: 3}
       propertyPath: m_Sprite
@@ -23158,8 +23188,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c77ebff1407c9c74e8db8b26450a028d, type: 3}
     - target: {fileID: 4212132540399245434, guid: 0c5431b342c79d148bdb19f3488a5de5, type: 3}
+      propertyPath: desc
+      value: Last time, I was walking by the sea. That's where I saw a red-haired
+        mermaid talking to a crab. She was looking for a way to become human. I told
+        her I could help her if she'd let me take one of her eyes. Yes! I needed
+        it for my circle! How else could I look after the tea and holly?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212132540399245434, guid: 0c5431b342c79d148bdb19f3488a5de5, type: 3}
       propertyPath: type
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212132540399245434, guid: 0c5431b342c79d148bdb19f3488a5de5, type: 3}
+      propertyPath: title
+      value: Siren Eye
       objectReference: {fileID: 0}
     - target: {fileID: 5094267677233551164, guid: 0c5431b342c79d148bdb19f3488a5de5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -23636,6 +23677,9 @@ MonoBehaviour:
   selectButton: {fileID: 8300000, guid: a24e47a249c42ab478556dcba6ac042b, type: 3}
   takeItem: {fileID: 8300000, guid: f75763a44d454cf43a88f6ddf7e2762e, type: 3}
   dropItem: {fileID: 8300000, guid: fdac54832c430bb42b089c60ae0eabcf, type: 3}
+  win: {fileID: 8300000, guid: 4e4e13945a9e18646bc60d293cbceff4, type: 3}
+  loose: {fileID: 8300000, guid: ecaa8f2f82f061d4896e0823c14d7925, type: 3}
+  hit: {fileID: 8300000, guid: 8ec6e6c2fc75b9d4e9b5f64c8f1fe3d5, type: 3}
 --- !u!82 &577969369
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26288,8 +26332,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c77ebff1407c9c74e8db8b26450a028d, type: 3}
     - target: {fileID: 9037769607368970149, guid: 893c6891c207cae478f3eb92b1ba5e2d, type: 3}
+      propertyPath: desc
+      value: Vampires, beware of these beings. They'll attack your children, corrupt
+        your women and take your place in their hearts - all because Interview with
+        a Vampire, Twilight and Baldure's gate 3 were released ! Place them at the
+        crossroads of tea and flasks. Just don't put it anywhere near the clogs!
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037769607368970149, guid: 893c6891c207cae478f3eb92b1ba5e2d, type: 3}
       propertyPath: type
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037769607368970149, guid: 893c6891c207cae478f3eb92b1ba5e2d, type: 3}
+      propertyPath: title
+      value: Vampire Teeth
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26688,6 +26743,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c77ebff1407c9c74e8db8b26450a028d, type: 3}
+    - target: {fileID: 9055516327113101403, guid: 41c6933fd7c0d7041b5e4b3fc79f92bb, type: 3}
+      propertyPath: desc
+      value: Delicious when fried with mayo, worcestershire sauce or Chinese sauce
+        if you get it at Crossbow Burger, a must-have ingredient for your cheat meal
+        and for summoning your boss (as long as it's on top and opposite the fang
+        and tail). You also have to be careful not to mix it with rat poison and
+        bleach.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055516327113101403, guid: 41c6933fd7c0d7041b5e4b3fc79f92bb, type: 3}
+      propertyPath: title
+      value: Bat Wing
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27565,6 +27632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 267625758}
   end: {fileID: 1496347250}
+  sfxManager: {fileID: 577969368}
 --- !u!4 &1065222514
 Transform:
   m_ObjectHideFlags: 0
@@ -27681,8 +27749,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6586094288378243921, guid: a700330b8ec635f438feb3c28580498d, type: 3}
+      propertyPath: desc
+      value: Flour ? Baking soda? I wouldn't know. I've seen some humans suck it
+        up through their noses. Perhaps a strange custom of these strange creatures...
+        I should try to bring it closer to the vial to see what it might create.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586094288378243921, guid: a700330b8ec635f438feb3c28580498d, type: 3}
       propertyPath: type
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586094288378243921, guid: a700330b8ec635f438feb3c28580498d, type: 3}
+      propertyPath: title
+      value: White Powder
       objectReference: {fileID: 0}
     - target: {fileID: 8412465757251814574, guid: a700330b8ec635f438feb3c28580498d, type: 3}
       propertyPath: m_Sprite
@@ -27907,8 +27985,20 @@ PrefabInstance:
       value: NoteTail Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6657227967957228552, guid: 22a23c306639a2f439fd0448e1012b30, type: 3}
+      propertyPath: desc
+      value: OK, if the design of this item is reminiscent of the pigs in Don't Starve,
+        that's normal - the artist loves that game (place it on top to summon Satan,
+        and on the bottom for the boss). This ingredient can also be eaten as a stew
+        with carrots, potatoes and turnips. Even though I don't like turnips...and
+        I'm a vegetarian.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657227967957228552, guid: 22a23c306639a2f439fd0448e1012b30, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657227967957228552, guid: 22a23c306639a2f439fd0448e1012b30, type: 3}
+      propertyPath: title
+      value: Some Pig Tail
       objectReference: {fileID: 0}
     - target: {fileID: 8339168167947449335, guid: 22a23c306639a2f439fd0448e1012b30, type: 3}
       propertyPath: m_Sprite
@@ -37411,8 +37501,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: efea7edd37b761d4ab5c997503183779, type: 3}
     - target: {fileID: 4022927064638508647, guid: c64e68cb85280bc478c93fd6928f3616, type: 3}
+      propertyPath: desc
+      value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        tempus ipsum turpis, sit amet malesuada ante pharetra vel. Nam tincidunt,
+        ipsum id venenatis auctor, All the way east, the finger can only point to
+        the wing and tail. Vitae porta tortor metus in urna. In placerat vestibulum
+        sollicitudin. Nam nibh enim, aliquam ac mi eget, suscipit vestibulum ante.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022927064638508647, guid: c64e68cb85280bc478c93fd6928f3616, type: 3}
       propertyPath: type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022927064638508647, guid: c64e68cb85280bc478c93fd6928f3616, type: 3}
+      propertyPath: title
+      value: Just A Finger
       objectReference: {fileID: 0}
     - target: {fileID: 5409587954614763809, guid: c64e68cb85280bc478c93fd6928f3616, type: 3}
       propertyPath: m_AnchoredPosition.y

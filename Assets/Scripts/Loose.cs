@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Loose : MonoBehaviour
 {
-    [SerializeField] GameObject camera;
+    [SerializeField] GameObject _camera;
     [SerializeField] GameObject LoosePart;
     [SerializeField] InvocationManager _invocationManager;
     [SerializeField] GameObject _invisibleZone;
@@ -19,7 +19,7 @@ public class Loose : MonoBehaviour
 
     private void Start()
     {
-        journeyLength = Vector3.Distance(camera.transform.position, new Vector3(camera.transform.position.x, camera.transform.position.y, 25));
+        journeyLength = Vector3.Distance(_camera.transform.position, new Vector3(_camera.transform.position.x, _camera.transform.position.y, 25));
     }
 
     public void PlayLoose()
@@ -57,7 +57,7 @@ public class Loose : MonoBehaviour
             
             timeElapsed += Time.deltaTime * speed;
             float fractionOfJourney = (timeElapsed / journeyLength);
-            camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(camera.transform.position.x, camera.transform.position.y, 30), fractionOfJourney);
+            _camera.transform.position = Vector3.Lerp(_camera.transform.position, new Vector3(_camera.transform.position.x, _camera.transform.position.y, 30), fractionOfJourney);
 
             yield return null;
         }

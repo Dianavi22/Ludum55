@@ -11,6 +11,9 @@ public class SfxManager : MonoBehaviour
     [SerializeField] AudioClip selectButton;
     [SerializeField] AudioClip takeItem;
     [SerializeField] AudioClip dropItem;
+    [SerializeField] AudioClip win;
+    [SerializeField] AudioClip loose;
+    [SerializeField] AudioClip hit;
 
     private void Awake()
     {
@@ -19,13 +22,13 @@ public class SfxManager : MonoBehaviour
 
     public void PageOpen()
     {
-        audioSource.volume = 0.02f;
+        audioSource.volume = 0.2f;
         _Play(pageOpen);
     }
 
     public void PageClose()
     {
-        audioSource.volume = 0.02f;
+        audioSource.volume = 0.2f;
         _Play(pageClose);
     }
 
@@ -52,6 +55,23 @@ public class SfxManager : MonoBehaviour
         _Play(dropItem);
     }
 
+    public void Win()
+    {
+        audioSource.volume = 0.8f;
+        _Play(win);
+    }
+
+    public void Hit()
+    {
+        audioSource.volume = 0.8f;
+        _Play(hit);
+    }
+
+    public void Loose()
+    {
+        audioSource.volume = 0.8f;
+        _Play(loose);
+    }
 
     private void _Play(AudioClip audioClip)
     {
