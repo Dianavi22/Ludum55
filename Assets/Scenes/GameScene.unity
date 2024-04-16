@@ -630,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 577969368}
     - target: {fileID: 7998457734754534358, guid: cd26c4437add01848a4c9abd6ebef687, type: 3}
       propertyPath: _type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7998457734754534358, guid: cd26c4437add01848a4c9abd6ebef687, type: 3}
       propertyPath: _noteCanvas
@@ -5921,7 +5921,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -17394,7 +17394,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -23136,7 +23136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869087154366311828, guid: 8e10bd2f1526ac24daa78e5f5338b0ea, type: 3}
       propertyPath: _type
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7869087154366311828, guid: 8e10bd2f1526ac24daa78e5f5338b0ea, type: 3}
       propertyPath: _noteCanvas
@@ -24081,7 +24081,7 @@ PrefabInstance:
       objectReference: {fileID: 577969368}
     - target: {fileID: 8548405584255235574, guid: 836ef3ef2e30d3e4c9a50df5983069b5, type: 3}
       propertyPath: _type
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8548405584255235574, guid: 836ef3ef2e30d3e4c9a50df5983069b5, type: 3}
       propertyPath: _noteCanvas
@@ -24909,7 +24909,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -25181,7 +25181,7 @@ PrefabInstance:
       objectReference: {fileID: 577969368}
     - target: {fileID: 2853861937902689917, guid: 932c1424073e9f946a1b0a1cd71ac181, type: 3}
       propertyPath: _type
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2853861937902689917, guid: 932c1424073e9f946a1b0a1cd71ac181, type: 3}
       propertyPath: _noteCanvas
@@ -25748,7 +25748,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -27133,7 +27133,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -28688,7 +28688,7 @@ PrefabInstance:
       objectReference: {fileID: 577969368}
     - target: {fileID: 7658454401522148939, guid: df31ea577a4609b41940441f323ccc05, type: 3}
       propertyPath: _type
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7658454401522148939, guid: df31ea577a4609b41940441f323ccc05, type: 3}
       propertyPath: _noteCanvas
@@ -28809,7 +28809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6737058899644528315, guid: bbbf6887c6477874c9616413d0f4932d, type: 3}
       propertyPath: _type
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6737058899644528315, guid: bbbf6887c6477874c9616413d0f4932d, type: 3}
       propertyPath: _noteCanvas
@@ -28993,7 +28993,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -29127,7 +29127,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -34622,7 +34622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2624092950141198059, guid: 089b64e39c2ff8541ac985553076f830, type: 3}
       propertyPath: _type
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2624092950141198059, guid: 089b64e39c2ff8541ac985553076f830, type: 3}
       propertyPath: _noteCanvas
@@ -35073,7 +35073,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -36210,7 +36210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8118556804589855099, guid: c2d7957c574e2074dbcd3b13cd532859, type: 3}
       propertyPath: _type
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8118556804589855099, guid: c2d7957c574e2074dbcd3b13cd532859, type: 3}
       propertyPath: _noteCanvas
@@ -37652,7 +37652,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _accept
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1324892821357753700, guid: 5f9029d901907164e9f5dfb28c6a30a0, type: 3}
       propertyPath: _gameManager
@@ -38468,7 +38468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6747604176248136861, guid: 883703ea8051bf64c92223ccba6e10c7, type: 3}
       propertyPath: _type
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6747604176248136861, guid: 883703ea8051bf64c92223ccba6e10c7, type: 3}
       propertyPath: _noteCanvas
@@ -39359,6 +39359,7 @@ MonoBehaviour:
   - {fileID: 340975476}
   _ingredientsZone: {fileID: 304324926}
   _emplacementsZone: {fileID: 1664975461}
+  _notesZone: {fileID: 460864164}
   _notes:
   - {fileID: 1713888442}
   - {fileID: 1902044896}

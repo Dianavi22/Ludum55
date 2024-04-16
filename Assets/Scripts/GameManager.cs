@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Ingredient[] _ingredients;
     [SerializeField] GameObject _ingredientsZone;
     [SerializeField] GameObject _emplacementsZone;
+    [SerializeField] GameObject _notesZone;
     [SerializeField] Note[] _notes;
     [SerializeField] Button _invokeButton;
     [SerializeField] GameObject _ingredientsContainer;
@@ -239,6 +240,7 @@ public class GameManager : MonoBehaviour
     {
         _invokeButton.gameObject.SetActive(false);
         _ingredientsZone.SetActive(false);
+        _notesZone.SetActive(false);
 
         _invocationManager.InvocationSuccess(() =>
         {
@@ -277,6 +279,7 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GAMESTATE.DEFEAT);
         _ingredientsZone.SetActive(false);
+        _notesZone.SetActive(false);
         _dialogManager.ShowDialog(new List<string>() { "Oh no..." }.ToArray(), Color.white, () =>{});
 
         _cam.Shake(5f, 0.1f);
@@ -307,6 +310,7 @@ public class GameManager : MonoBehaviour
     {
         _emplacementsZone.SetActive(true);
         _ingredientsZone.SetActive(true);
+        _notesZone.SetActive(true);
 
         foreach (var item in _emplacements.Where(e => !e.isEmpty()))
         {
