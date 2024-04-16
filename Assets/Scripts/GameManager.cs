@@ -308,6 +308,9 @@ public class GameManager : MonoBehaviour
         _emplacementsZone.SetActive(true);
         _ingredientsZone.SetActive(true);
         _notesZone.SetActive(true);
+        _invokeButton.GetComponent<RectTransform>().localScale = Vector3.zero;
+        _invokeButton.gameObject.SetActive(true);
+
 
         foreach (var item in _emplacements.Where(e => !e.isEmpty()))
         {
