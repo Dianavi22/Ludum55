@@ -76,13 +76,15 @@ public class Emplacement : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
     public void consumeEmplacement()
     {
         _consumeParticle.Play();
-        emptyEmplacement();
+        _image.sprite = _emptySprite;
     }
 
     public bool isOk()
     {
+        Debug.Log(_accept + " " + _ingredient);
         if (_ingredient)
         {
+            Debug.Log(_accept+" "+_ingredient.getType());
             return _accept == _ingredient.getType();
         }
         return false;

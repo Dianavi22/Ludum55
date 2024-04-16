@@ -243,6 +243,7 @@ public class GameManager : MonoBehaviour
             _dialogManager.ShowDialog(new List<string>() { "Hello there..." }.ToArray(), Color.red, () =>
             {
                 _Victory(); 
+                ResetEmplacements();
                 _invocationManager.ResetInvocation();
             });
         });
